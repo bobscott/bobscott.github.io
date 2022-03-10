@@ -25,7 +25,7 @@
 
 <script>
 
-function findWeights () {
+function findWeights() {
     let weight = document.querySelector('.weight-input').value,
         precent = document.querySelector('.precent-input').value,
         bar_weight = 45,
@@ -35,39 +35,45 @@ function findWeights () {
     while (net_weight > 0) {
         if (net_weight >= 45) {
             net_weight -= 45;
-            plates.push(45);
+            plates.push('<div class="plate size-45">45</div>');
         } else if (net_weight >= 35) {
             net_weight -= 35;
-            plates.push(35);
+            plates.push('<div class="plate size-35">35</div>');
         } else if (net_weight >= 25) {
             net_weight -= 25;
-            plates.push(25);
+            plates.push('<div class="plate size-25">25</div>');
         } else if (net_weight >= 10) {
             net_weight -= 10;
-            plates.push(10);
+            plates.push('<div class="plate size-10">10</div>');
         } else if (net_weight >= 5) {
             net_weight -= 5;
-            plates.push(5);
+            plates.push('<div class="plate size-5">5</div>');
         } else if (net_weight >= 2.5) {
             net_weight -= 2.5;
-            plates.push(2.5);
+            plates.push('<div class="plate size-2point5">2.5</div>');
         } else {
-            plates.push(net_weight);
+            plates.push('<div class="plate size-LO">' + net_weight + '</div>');
             net_weight = 0;
         }
     }
 
     if ( plates.length > 0 ) {
-        plates = '<div class="plate">' + plates.join('</div><div class="plate">') + '</div>';
-        document.querySelector('.weights-container').innerHTML = plates;
+        document.querySelector('.weights-container').innerHTML = plates.join('');
     } else {
         document.querySelector('.weights-container').innerHTML = '';
+    }
+
+    if ( weight.length == 3 ) {
+        document.querySelector('.weight-input').blur();
     }
 }
 
 document.querySelector('.weight-input').addEventListener( 'keyup', findWeights);
 document.querySelector('.precent-input').addEventListener( 'change', findWeights);
 
+findWeights();
+
+document.querySelector('.weight-input').focus();
 
 </script>
 </body>
