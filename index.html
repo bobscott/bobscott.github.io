@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Plate Finder</title>
+    <title>Plate Picker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="style.css" />
 </head>
@@ -35,23 +35,26 @@
             <fieldset class="setting">
                 <legend>Weight Sets</legend>
 
-                <label>55</label>
-                <select class="weight-select weight-55">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
+                <div class="setting-group">
+                    <label>55</label>
+                    <select class="weight-select weight-55">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
 
-                <label>45</label>
-                <select class="weight-select weight-45">
+                <div class="setting-group">
+                    <label>45</label>
+                    <select class="weight-select weight-45">
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
@@ -64,9 +67,11 @@
                     <option>9</option>
                     <option>10</option>
                 </select>
+                </div>
 
-                <label>35</label>
-                <select class="weight-select weight-35">
+                <div class="setting-group">
+                    <label>35</label>
+                    <select class="weight-select weight-35">
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
@@ -79,9 +84,11 @@
                     <option>9</option>
                     <option>10</option>
                 </select>
+                </div>
 
-                <label>25</label>
-                <select class="weight-select weight-25">
+                <div class="setting-group">
+                    <label>25</label>
+                    <select class="weight-select weight-25">
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
@@ -94,24 +101,28 @@
                     <option>9</option>
                     <option>10</option>
                 </select>
+                </div>
 
-                <label>10</label>
-                <select class="weight-select weight-10">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
+                <div class="setting-group">
+                    <label>15</label>
+                    <select class="weight-select weight-15">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
 
-                <label>5</label>
-                <select class="weight-select weight-5">
+                <div class="setting-group">
+                    <label>10</label>
+                    <select class="weight-select weight-10">
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
@@ -124,9 +135,11 @@
                     <option>9</option>
                     <option>10</option>
                 </select>
+                </div>
 
-                <label>2.5</label>
-                <select class="weight-select weight-2point5">
+                <div class="setting-group">
+                    <label>5</label>
+                    <select class="weight-select weight-5">
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
@@ -139,9 +152,11 @@
                     <option>9</option>
                     <option>10</option>
                 </select>
+                </div>
 
-                <label>1.25</label>
-                <select class="weight-select weight-1point25">
+                <div class="setting-group">
+                    <label>2.5</label>
+                    <select class="weight-select weight-2point5">
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
@@ -154,6 +169,24 @@
                     <option>9</option>
                     <option>10</option>
                 </select>
+                </div>
+
+                <div class="setting-group">
+                    <label>1.25</label>
+                    <select class="weight-select weight-1point25">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                    </select>
+                </div>
             </fieldset>
         </div>
     </div>
@@ -167,30 +200,63 @@ function findWeights() {
         bar_weight = window.localStorage.barWeight || 45,
         net_weight = ( ( weight - bar_weight ) * precent ) / 2,
         plates = [],
-        output = '';
+        output = '',
+        weight55 = window.localStorage.weight55,
+        weight45 = window.localStorage.weight45,
+        weight35 = window.localStorage.weight35,
+        weight25 = window.localStorage.weight25,
+        weight15 = window.localStorage.weight15,
+        weight10 = window.localStorage.weight10,
+        weight5 = window.localStorage.weight5,
+        weight2point5 = window.localStorage.weight2point5,
+        weight1point25 = window.localStorage.weight1point25;
 
-    while (net_weight > 0) {
-        if (net_weight >= 45) {
+    while ( net_weight > 0 ) {
+        if ( net_weight >= 55 && weight55 > 0 ) {
+            weight55 -= 1;
+            net_weight -= 55;
+            plates.push('<div class="plate size-55">55</div>');
+
+        } else if ( net_weight >= 45 && weight45 > 0 ) {
+            weight45 -= 1;
             net_weight -= 45;
             plates.push('<div class="plate size-45">45</div>');
-        } else if (net_weight >= 35) {
+
+        } else if ( net_weight >= 35 && weight35 > 0 ) {
+            weight35 -= 1;
             net_weight -= 35;
             plates.push('<div class="plate size-35">35</div>');
-        } else if (net_weight >= 25) {
+
+        } else if ( net_weight >= 25 && weight25 > 0 ) {
+            weight25 -= 1;
             net_weight -= 25;
             plates.push('<div class="plate size-25">25</div>');
-        } else if (net_weight >= 10) {
+
+        } else if ( net_weight >= 15 && weight15 > 0 ) {
+            weight15 -= 1;
+            net_weight -= 15;
+            plates.push('<div class="plate size-15">15</div>');
+
+        } else if ( net_weight >= 10 && weight10 > 0 ) {
+            weight10 -= 1;
             net_weight -= 10;
             plates.push('<div class="plate size-10">10</div>');
-        } else if (net_weight >= 5) {
+
+        } else if ( net_weight >= 5 && weight5 > 0 ) {
+            weight5 -= 1;
             net_weight -= 5;
             plates.push('<div class="plate size-5">5</div>');
-        } else if (net_weight >= 2.5) {
+
+        } else if ( net_weight >= 2.5 && weight2point5 > 0 ) {
+            weight2point5 -= 1;
             net_weight -= 2.5;
             plates.push('<div class="plate size-2point5">2.5</div>');
-        } else if (net_weight >= 1.25) {
+
+        } else if ( net_weight >= 1.25 && weight1point25 > 0 ) {
+            weight1point25 -= 1;
             net_weight -= 1.25;
             plates.push('<div class="plate size-1point25">1.25</div>');
+
         } else {
             plates.push('<div class="plate size-LO">' + net_weight + '</div>');
             net_weight = 0;
@@ -233,7 +299,18 @@ function setBarWeight() {
     let bar_weight = document.querySelector('.bar-weight').value;
      window.localStorage.barWeight = bar_weight;
 }
-document.querySelector('.bar-weight').addEventListener( 'keyup', setBarWeight);
+document.querySelector('.bar-weight').addEventListener( 'keyup', setBarWeight );
+
+// sets the weight set value in settings
+function setWeightSet(e) {
+    let size = this.classList[ 1 ].split('-')[ 1 ];
+    window.localStorage[ 'weight' + size ] = this.value;
+}
+let weightSets = document.querySelectorAll('.weight-select');
+
+for ( let a = 0; a < weightSets.length; a += 1 ) {
+    weightSets[ a ].addEventListener( 'change', setWeightSet );
+}
 
 // retrieves and sets default values in settings
 function init() {
@@ -242,6 +319,28 @@ function init() {
 
     // display bar weight in settings
     document.querySelector('.bar-weight').value = window.localStorage.barWeight;
+
+    // set default weight quantities
+    window.localStorage.weight55 = window.localStorage.weight55 || 0;
+    window.localStorage.weight45 = window.localStorage.weight45 || 10;
+    window.localStorage.weight35 = window.localStorage.weight35 || 1;
+    window.localStorage.weight25 = window.localStorage.weight25 || 1;
+    window.localStorage.weight15 = window.localStorage.weight15 || 0;
+    window.localStorage.weight10 = window.localStorage.weight10 || 2;
+    window.localStorage.weight5 = window.localStorage.weight5 || 1;
+    window.localStorage.weight2point5 = window.localStorage.weight2point5 || 1;
+    window.localStorage.weight1point25 = window.localStorage.weight1point25 || 0;
+
+    // display weight sets in settings
+    document.querySelector('.weight-55').value = window.localStorage.weight55;
+    document.querySelector('.weight-45').value = window.localStorage.weight45;
+    document.querySelector('.weight-35').value = window.localStorage.weight35;
+    document.querySelector('.weight-25').value = window.localStorage.weight25;
+    document.querySelector('.weight-15').value = window.localStorage.weight15;
+    document.querySelector('.weight-10').value = window.localStorage.weight10;
+    document.querySelector('.weight-5').value = window.localStorage.weight5;
+    document.querySelector('.weight-2point5').value = window.localStorage.weight2point5;
+    document.querySelector('.weight-1point25').value = window.localStorage.weight1point25;
 
     // calculate weights in case field is auto filled by browser on page load
     findWeights();
