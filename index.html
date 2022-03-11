@@ -298,6 +298,7 @@ document.querySelector('.settings-button').addEventListener( 'click', ()=>{
 function setBarWeight() {
     let bar_weight = document.querySelector('.bar-weight').value;
      window.localStorage.barWeight = bar_weight;
+     findWeights();
 }
 document.querySelector('.bar-weight').addEventListener( 'keyup', setBarWeight );
 
@@ -305,6 +306,7 @@ document.querySelector('.bar-weight').addEventListener( 'keyup', setBarWeight );
 function setWeightSet(e) {
     let size = this.classList[ 1 ].split('-')[ 1 ];
     window.localStorage[ 'weight' + size ] = this.value;
+    findWeights();
 }
 let weightSets = document.querySelectorAll('.weight-select');
 
