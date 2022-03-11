@@ -46,6 +46,11 @@ body {
     color: var(--color-white);
 }
 
+.logo a {
+    text-decoration: none;
+    color: var(--color-white);
+}
+
 .logo span {
     margin-left: 2px;
     font-weight: bold;
@@ -186,9 +191,25 @@ body {
 }
 
 .plate.size-LO {
-    width: 65px;
+    flex-wrap: wrap;
+    width: 100%;
     height: 65px;
+    border-radius: 4px;
     background-color: pink;
+    font-size: 1.2rem;
+}
+
+.plate.size-LO::before {
+    content: 'Missing weights for: ';
+    margin-right: 10px;
+}
+
+.plate.size-LO::after {
+    content: 'Adjust your weight sets in the settings.';
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
 }
 
 .settings-popup {
