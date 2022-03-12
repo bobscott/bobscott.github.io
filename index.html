@@ -11,12 +11,14 @@
     <div class="app">
         <header class="header">
             <h1 class="logo"><a href="/">Plate<span>Picker</span></a></h1>
+            <div class="timer">0:00</div>
             <button class="settings-button" type="button">Settings</button>
         </header>
         <div class="weights-container">
 
         </div>
         <div class="input-container">
+            <div class="rest-button">Rest</div>
             <input type="number" class="weight-input" placeholder="Input Weight" />
             <select class="precent-input">
                 <option value="1">100%</option>
@@ -30,6 +32,26 @@
             <fieldset class="setting">
                 <legend>Bar Weight</legend>
                 <input type="number" class="bar-weight" />
+            </fieldset>
+
+            <fieldset class="setting">
+                <legend>Rest Timer</legend>
+                <select class="rest-amount">
+                    <option>0:12</option>
+                    <option>0:30</option>
+                    <option>0:45</option>
+                    <option>1:00</option>
+                    <option>1:15</option>
+                    <option>1:30</option>
+                    <option>1:45</option>
+                    <option>2:00</option>
+                    <option>2:30</option>
+                    <option>3:00</option>
+                    <option>3:30</option>
+                    <option>4:00</option>
+                    <option>4:30</option>
+                    <option>5:00</option>
+                </select>
             </fieldset>
 
             <fieldset class="setting">
@@ -294,11 +316,13 @@ document.querySelector('.settings-button').addEventListener( 'click', ()=>{
     document.querySelector('.settings-popup').classList.toggle('open');
 });
 
+
+
 // sets the bar weight value in settings
 function setBarWeight() {
     let bar_weight = document.querySelector('.bar-weight').value;
-     window.localStorage.barWeight = bar_weight;
-     findWeights();
+    window.localStorage.barWeight = bar_weight;
+    findWeights();
 }
 document.querySelector('.bar-weight').addEventListener( 'keyup', setBarWeight );
 
@@ -314,6 +338,59 @@ for ( let a = 0; a < weightSets.length; a += 1 ) {
     weightSets[ a ].addEventListener( 'change', setWeightSet );
 }
 
+// sets rest timer in settings
+function setRestTimer() {
+    let rest_time = document.querySelector('.rest-amount').value;
+    window.localStorage.restTime = rest_time;
+}
+document.querySelector('.rest-amount').addEventListener( 'change', setRestTimer );
+
+// timer function
+var timeInterval = '',
+    timePaused = -1;
+function startTimer() {
+    let endMinutes = window.localStorage.restTime.split(':')[ 0 ] * 1,
+        endSeconds = window.localStorage.restTime.split(':')[ 1 ] * 1,
+        timer = document.querySelector( '.timer' ),
+        audio = new Audio( 'timer.wav' );
+
+    // show timer
+    clearInterval( timeInterval );
+    if ( endSeconds < 10 ) {
+        timer.innerHTML = endMinutes + ':0' + endSeconds;
+    } else {
+        timer.innerHTML = endMinutes + ':' + endSeconds;
+    }
+    timer.classList.remove( 'red' );
+    timer.classList.add( 'show' );
+
+    // start timer
+    timeInterval = setInterval(()=>{
+        if ( timePaused == -1 ) {
+            endSeconds -= 1;
+        }
+        if ( endSeconds < 0 && endMinutes > 0 ) {
+            endSeconds = 59;
+            endMinutes -= 1;
+        } else if ( endSeconds < 1 && endMinutes == 0 ) {
+            clearInterval( timeInterval );
+            audio.play();
+        }
+        if ( endSeconds < 10 ) {
+            timer.innerHTML = endMinutes + ':0' + endSeconds;
+        } else {
+            timer.innerHTML = endMinutes + ':' + endSeconds;
+        }
+        if ( endSeconds == 10 && endMinutes == 0 ) {
+            timer.classList.add( 'red' );
+        } else if ( endSeconds == 0 && endMinutes == 0 ) {
+            timer.classList.remove( 'red' );
+        }
+    }, 1000);
+}
+document.querySelector('.rest-button').addEventListener( 'click', startTimer );
+document.querySelector('.timer').addEventListener( 'click', ()=>{ timePaused *= -1; } );
+
 // retrieves and sets default values in settings
 function init() {
     // set default bar weight value
@@ -321,6 +398,12 @@ function init() {
 
     // display bar weight in settings
     document.querySelector('.bar-weight').value = window.localStorage.barWeight;
+
+    // set default rest time
+    window.localStorage.restTime = window.localStorage.restTime || '2:00';
+
+    // display rest time in settings
+    document.querySelector('.rest-amount').value = window.localStorage.restTime;
 
     // set default weight quantities
     window.localStorage.weight55 = window.localStorage.weight55 || 0;
