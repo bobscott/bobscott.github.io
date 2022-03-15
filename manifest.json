@@ -10,7 +10,7 @@
   "icons": [{
        "src": "plate-picker-1024.png",
        "sizes": "1024x1024",
-       "type": "image/png"
+       "type": "image/png",
        "purpose": "any"
    },{
     "src": "plate-picker-1024-maskable.png",
