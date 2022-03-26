@@ -5,13 +5,13 @@
     <title>Plate Picker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#171520">
-    <link rel="shortcut icon" sizes="512x512" href="plate-picker-512.png">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="shortcut icon" sizes="512x512" href="/assets/images/plate-picker-512.png">
+    <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
     <script>
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+            navigator.serviceWorker.register('/assets/js/service-worker.js').then(function(registration) {
                 console.log('Registration successful, scope is:', registration.scope);
             })
             .catch(function(error) {
@@ -22,212 +22,212 @@
 </head>
 <body>
 
-    <div class="app">
-        <header class="header">
-            <h1 class="logo"><a href="/">Plate<span>Picker</span></a></h1>
-            <div class="timer">0:00</div>
-            <button class="settings-button" type="button">Settings</button>
-        </header>
-        <div class="weights-container">
+<div class="app">
+    <header class="header">
+        <h1 class="logo"><a href="/">Plate<span>Picker</span></a></h1>
+        <div class="timer">0:00</div>
+        <button class="settings-button" type="button">Settings</button>
+    </header>
+    <div class="weights-container">
 
-        </div>
-        <div class="input-container">
-            <div class="rest-button">Rest</div>
-            <input type="number" class="weight-input" pattern="\d*" placeholder="Input Weight" />
-            <select class="precent-input">
-                <option value="1">100%</option>
-                <option value="0.75">75%</option>
-                <option value="0.5">50%</option>
-                <option value="0.25">25%</option>
-            </select>
-        </div>
-
-        <div class="settings-popup">
-            <fieldset class="setting">
-                <legend>Rest Timer</legend>
-                <select class="rest-amount">
-                    <option>0:02</option>
-                    <option>0:12</option>
-                    <option>0:30</option>
-                    <option>0:45</option>
-                    <option>1:00</option>
-                    <option>1:15</option>
-                    <option>1:30</option>
-                    <option>1:45</option>
-                    <option>2:00</option>
-                    <option>2:30</option>
-                    <option>3:00</option>
-                    <option>3:30</option>
-                    <option>4:00</option>
-                    <option>4:30</option>
-                    <option>5:00</option>
-                </select>
-            </fieldset>
-
-            <fieldset class="setting">
-                <legend>Bar Weight</legend>
-                <input type="number" pattern="\d*" class="bar-weight" />
-            </fieldset>
-
-            <fieldset class="setting">
-                <legend>Weight Sets</legend>
-
-                <div class="setting-group">
-                    <label>55</label>
-                    <select class="weight-select weight-55">
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                    </select>
-                </div>
-
-                <div class="setting-group">
-                    <label>45</label>
-                    <select class="weight-select weight-45">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
-                </div>
-
-                <div class="setting-group">
-                    <label>35</label>
-                    <select class="weight-select weight-35">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
-                </div>
-
-                <div class="setting-group">
-                    <label>25</label>
-                    <select class="weight-select weight-25">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
-                </div>
-
-                <div class="setting-group">
-                    <label>15</label>
-                    <select class="weight-select weight-15">
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                    </select>
-                </div>
-
-                <div class="setting-group">
-                    <label>10</label>
-                    <select class="weight-select weight-10">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
-                </div>
-
-                <div class="setting-group">
-                    <label>5</label>
-                    <select class="weight-select weight-5">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
-                </div>
-
-                <div class="setting-group">
-                    <label>2.5</label>
-                    <select class="weight-select weight-2point5">
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
-                </div>
-
-                <div class="setting-group">
-                    <label>1.25</label>
-                    <select class="weight-select weight-1point25">
-                        <option>0</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                    </select>
-                </div>
-            </fieldset>
-        </div>
+    </div>
+    <div class="input-container">
+        <div class="rest-button">Rest</div>
+        <input type="number" class="weight-input" pattern="\d*" placeholder="Input Weight" />
+        <select class="precent-input">
+            <option value="1">100%</option>
+            <option value="0.75">75%</option>
+            <option value="0.5">50%</option>
+            <option value="0.25">25%</option>
+        </select>
     </div>
 
-<script src="script.js"></script>
+    <div class="settings-popup">
+        <fieldset class="setting">
+            <legend>Rest Timer</legend>
+            <select class="rest-amount">
+                <option>0:02</option>
+                <option>0:12</option>
+                <option>0:30</option>
+                <option>0:45</option>
+                <option>1:00</option>
+                <option>1:15</option>
+                <option>1:30</option>
+                <option>1:45</option>
+                <option>2:00</option>
+                <option>2:30</option>
+                <option>3:00</option>
+                <option>3:30</option>
+                <option>4:00</option>
+                <option>4:30</option>
+                <option>5:00</option>
+            </select>
+        </fieldset>
+
+        <fieldset class="setting">
+            <legend>Bar Weight</legend>
+            <input type="number" pattern="\d*" class="bar-weight" />
+        </fieldset>
+
+        <fieldset class="setting">
+            <legend>Weight Sets</legend>
+
+            <div class="setting-group">
+                <label>55</label>
+                <select class="weight-select weight-55">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label>45</label>
+                <select class="weight-select weight-45">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+            </div>
+
+            <div class="setting-group">
+                <label>35</label>
+                <select class="weight-select weight-35">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+            </div>
+
+            <div class="setting-group">
+                <label>25</label>
+                <select class="weight-select weight-25">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+            </div>
+
+            <div class="setting-group">
+                <label>15</label>
+                <select class="weight-select weight-15">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            </div>
+
+            <div class="setting-group">
+                <label>10</label>
+                <select class="weight-select weight-10">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+            </div>
+
+            <div class="setting-group">
+                <label>5</label>
+                <select class="weight-select weight-5">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+            </div>
+
+            <div class="setting-group">
+                <label>2.5</label>
+                <select class="weight-select weight-2point5">
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+            </select>
+            </div>
+
+            <div class="setting-group">
+                <label>1.25</label>
+                <select class="weight-select weight-1point25">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+            </div>
+        </fieldset>
+    </div>
+</div>
+
+<script src="/assets/js/script.js"></script>
 </body>
 </html>
