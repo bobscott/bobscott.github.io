@@ -86,10 +86,6 @@ function findWeights() {
     } else {
         document.querySelector('.weights-container').innerHTML = '';
     }
-
-    if ( weight.length == 3 ) {
-        document.querySelector('.weight-input').blur();
-    }
 }
 document.querySelector('.weight-input').addEventListener( 'keyup', findWeights);
 document.querySelector('.precent-input').addEventListener( 'change', findWeights);
@@ -100,7 +96,6 @@ document.querySelector('.settings-button').addEventListener( 'click', ()=>{
 });
 
 
-
 // sets the bar weight value in settings
 function setBarWeight() {
     let bar_weight = document.querySelector('.bar-weight').value;
@@ -108,6 +103,7 @@ function setBarWeight() {
     findWeights();
 }
 document.querySelector('.bar-weight').addEventListener( 'keyup', setBarWeight );
+
 
 // sets the weight set value in settings
 function setWeightSet(e) {
@@ -121,12 +117,14 @@ for ( let a = 0; a < weightSets.length; a += 1 ) {
     weightSets[ a ].addEventListener( 'change', setWeightSet );
 }
 
+
 // sets rest timer in settings
 function setRestTimer() {
     let rest_time = document.querySelector('.rest-amount').value;
     window.localStorage.restTime = rest_time;
 }
 document.querySelector('.rest-amount').addEventListener( 'change', setRestTimer );
+
 
 // timer function
 var timeInterval = '',
@@ -175,6 +173,7 @@ function startTimer() {
 }
 document.querySelector('.rest-button').addEventListener( 'click', startTimer );
 document.querySelector('.timer').addEventListener( 'click', ()=>{ timePaused *= -1; } );
+
 
 // retrieves and sets default values in settings
 function init() {
