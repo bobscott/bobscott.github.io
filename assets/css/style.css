@@ -329,7 +329,7 @@ body {
     width: 100%;
     max-width: none;
     height: 100%;
-    padding: 5.2rem 2rem 2rem;
+    padding: 5.2rem 1rem 2rem;
     margin: 0; 
     border: none;
     background: #0f0f0f;
@@ -373,7 +373,7 @@ body {
 .setting-group {
     display: flex;
     align-items: center;
-    padding: 1rem 0.5rem;
+    padding: 0.75rem 0.5rem;
     border-bottom: 1px solid #222;
 }
 
