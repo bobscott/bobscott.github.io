@@ -89,7 +89,13 @@ function findWeights() {
     }
 }
 
-document.querySelector('.weight-input').addEventListener( 'keyup', findWeights );
+// weight key input
+function weightKeyInput() {
+    showContextButton('ok');
+    findWeights();
+}
+
+document.querySelector('.weight-input').addEventListener( 'keyup', weightKeyInput );
 document.querySelector('.precent-input').addEventListener( 'change', findWeights );
 
 // weight input blur
