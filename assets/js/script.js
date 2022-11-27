@@ -209,6 +209,7 @@ for ( let a = 0; a < weightSets.length; a += 1 ) {
 function setRestTimer() {
     let rest_time = document.querySelector('.rest-amount').value;
 
+    document.querySelector('.setting-option[data-setting="rest-amount"] .preview').innerHTML = rest_time;
     window.localStorage.restTime = rest_time;
 }
 
@@ -288,6 +289,7 @@ function init() {
 
     // display rest time in settings
     document.querySelector('.rest-amount').value = window.localStorage.restTime;
+    document.querySelector('.setting-option[data-setting="rest-amount"] .preview').innerHTML = window.localStorage.restTime;
 
     // set default weight quantities
     window.localStorage.weight55 = window.localStorage.weight55 || 0;
