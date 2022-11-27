@@ -95,8 +95,10 @@ document.querySelector('.precent-input').addEventListener( 'change', findWeights
 // weight input blur
 function weightInputBlur() {
     setTimeout(()=>{
-        document.querySelector('.input-container .context-buttons').classList.remove( 'show-ok', 'show-clear' );
-    }, 1);
+        if (document.activeElement != document.querySelector('.weight-input')) {
+            document.querySelector('.input-container .context-buttons').classList.remove( 'show-ok', 'show-clear' );
+        }
+    }, 50);
 }
 
 document.querySelector('.weight-input').addEventListener( 'blur', weightInputBlur);
@@ -116,11 +118,9 @@ document.querySelector('.weight-input').addEventListener( 'focus', weightInputFo
 
 // clear input
 function clearWeightInput() {
-    setTimeout(()=>{
-        document.querySelector('.weight-input').value = '';
-        findWeights();
-        document.querySelector('.weight-input').focus();
-    },2);
+    document.querySelector('.weight-input').value = '';
+    document.querySelector('.weight-input').focus();
+    findWeights();
 }
 
 document.querySelector('.input-container .context-buttons .clear').addEventListener( 'click', clearWeightInput);
@@ -141,12 +141,12 @@ function showContextButton( button ) {
 
 // opens settings menu
 document.querySelector('.settings-button').addEventListener( 'click', ()=>{
-    document.querySelector('.settings-popup').classList.toggle('open');
+    document.body.classList.toggle('settings-open');
 });
 
 // closes settings menu
 document.querySelector('.close-settings').addEventListener( 'click', ()=>{
-    document.querySelector('.settings-popup').classList.remove('open');
+    document.body.classList.remove('settings-open');
 });
 
 // opens settings option
