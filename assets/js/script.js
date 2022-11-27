@@ -70,6 +70,7 @@ function findWeights() {
 
     if ( plates.length > 0 ) {
         let last = '';
+
         for ( let a = 0; a < plates.length; a += 1 ) {
             if ( plates[ a ] != last ) {
                 if ( a != 0 ) {
@@ -82,22 +83,61 @@ function findWeights() {
             last = plates[ a ];
         }
         output += '</div>';
-
-        output += '<div class="clear-button" role="button">Clear</div>';
-
         document.querySelector('.weights-container').innerHTML = output;
-
-        document.querySelector('.clear-button').addEventListener('click', (e)=>{
-            document.querySelector('.weight-input').value = '';
-            findWeights();
-        });
     } else {
         document.querySelector('.weights-container').innerHTML = '';
     }
 }
 
-document.querySelector('.weight-input').addEventListener( 'keyup', findWeights);
-document.querySelector('.precent-input').addEventListener( 'change', findWeights);
+document.querySelector('.weight-input').addEventListener( 'keyup', findWeights );
+document.querySelector('.precent-input').addEventListener( 'change', findWeights );
+
+// weight input blur
+function weightInputBlur() {
+    setTimeout(()=>{
+        document.querySelector('.input-container .context-buttons').classList.remove( 'show-ok', 'show-clear' );
+    }, 1);
+}
+
+document.querySelector('.weight-input').addEventListener( 'blur', weightInputBlur);
+
+// weight input focus
+function weightInputFocus() {
+    let weightValue = document.querySelector('.weight-input').value;
+    
+    if (weightValue == '') {
+        showContextButton('ok');
+    } else {
+        showContextButton('clear');
+    }
+}
+
+document.querySelector('.weight-input').addEventListener( 'focus', weightInputFocus);
+
+// clear input
+function clearWeightInput() {
+    setTimeout(()=>{
+        document.querySelector('.weight-input').value = '';
+        findWeights();
+        document.querySelector('.weight-input').focus();
+    },2);
+}
+
+document.querySelector('.input-container .context-buttons .clear').addEventListener( 'click', clearWeightInput);
+
+// show context buttons
+function showContextButton( button ) {
+    document.querySelector('.input-container .context-buttons').classList.remove( 'show-ok', 'show-clear' );
+
+    switch (button) {
+        case 'ok':
+            document.querySelector('.input-container .context-buttons').classList.add( 'show-ok' );
+            break;
+        case 'clear':
+            document.querySelector('.input-container .context-buttons').classList.add( 'show-clear' );
+            break;
+    }
+}
 
 // opens settings menu
 document.querySelector('.settings-button').addEventListener( 'click', ()=>{
@@ -118,9 +158,14 @@ for (let a = 0; a < settingOptions.length; a += 1) {
 
 function openSetting(e) {
     let setting = e.target.closest('.setting-option').getAttribute('data-setting'),
+        input = e.target.closest('.setting-option').querySelector('.' + setting), 
         menu = document.querySelector('.setting[data-setting="' + setting + '"]');
 
-    menu.classList.add('show');
+    if (menu) {
+        menu.classList.add('show');
+    } else if (input) {
+        input.focus();
+    }
 }
 
 // closes settings option
@@ -139,7 +184,6 @@ function setBarWeight() {
     let bar_weight = document.querySelector('.bar-weight').value;
 
     window.localStorage.barWeight = bar_weight;
-    document.querySelector('.setting-option[data-setting="bar-weight"] .preview').innerHTML = bar_weight;
     findWeights();
 }
 
@@ -165,7 +209,6 @@ for ( let a = 0; a < weightSets.length; a += 1 ) {
 function setRestTimer() {
     let rest_time = document.querySelector('.rest-amount').value;
 
-    document.querySelector('.setting-option[data-setting="rest-timer"] .preview').innerHTML = rest_time;
     window.localStorage.restTime = rest_time;
 }
 
@@ -239,14 +282,12 @@ function init() {
 
     // display bar weight in settings
     document.querySelector('.bar-weight').value = window.localStorage.barWeight;
-    document.querySelector('.setting-option[data-setting="bar-weight"] .preview').innerHTML = window.localStorage.barWeight;
 
     // set default rest time
     window.localStorage.restTime = window.localStorage.restTime || '2:00';
 
     // display rest time in settings
     document.querySelector('.rest-amount').value = window.localStorage.restTime;
-    document.querySelector('.setting-option[data-setting="rest-timer"] .preview').innerHTML = window.localStorage.restTime;
 
     // set default weight quantities
     window.localStorage.weight55 = window.localStorage.weight55 || 0;

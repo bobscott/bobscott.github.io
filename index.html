@@ -36,8 +36,15 @@
 
     </div>
     <div class="input-container">
-        <div class="rest-button">Rest</div>
+        <div class="rest-button" role="button">Rest</div>
+        
         <input type="number" class="weight-input" pattern="\d*" inputmode="decimal" placeholder="Input Weight" />
+
+        <div class="context-buttons">
+            <button type="button" class="ok">OK</button>
+            <button type="button" class="clear">Clear</button>
+        </div>
+
         <select class="precent-input">
             <option value="1">100%</option>
             <option value="0.75">75%</option>
@@ -52,24 +59,40 @@
 
             <h1 class="menu-title">Settings</h1>
             
-            <div class="setting-option" role="button" data-setting="weight-set">
+            <div class="setting-option more" role="button" data-setting="weight-set">
                 <span class="label">Weight Sets</span>
             </div>
 
             <div class="setting-option" role="button" data-setting="bar-weight">
                 <span class="label">Bar Weight</span>
-                <span class="preview">45</span>
+                <input type="number" pattern="\d*" inputmode="decimal" class="bar-weight" />
             </div>
 
-            <div class="setting-option" role="button" data-setting="rest-timer">
+            <div class="setting-option" role="button" data-setting="rest-amount">
                 <span class="label">Rest Timer</span>
-                <span class="preview">2:00</span>
+                <select class="rest-amount">
+                    <option>0:02</option>
+                    <option>0:12</option>
+                    <option>0:30</option>
+                    <option>0:45</option>
+                    <option>1:00</option>
+                    <option>1:15</option>
+                    <option>1:30</option>
+                    <option>1:45</option>
+                    <option>2:00</option>
+                    <option>2:30</option>
+                    <option>3:00</option>
+                    <option>3:30</option>
+                    <option>4:00</option>
+                    <option>4:30</option>
+                    <option>5:00</option>
+                </select>
             </div>
 
             <div class="close-settings" role="button">Close</div>
         </div>
 
-        <fieldset class="setting" data-setting="rest-timer">
+        <!-- <fieldset class="setting" data-setting="rest-timer">
             <div class="setting-content">
                 <legend>Settings <span class="chevron"></span> Rest Timer</legend>
                 <select class="rest-amount">
@@ -92,16 +115,16 @@
 
                 <div class="back-button" role="button">Back</div>
             </div>
-        </fieldset>
+        </fieldset> -->
 
-        <fieldset class="setting" data-setting="bar-weight">
+        <!-- <fieldset class="setting" data-setting="bar-weight">
             <div class="setting-content">
                 <legend>Settings <span class="chevron"></span> Bar Weight</legend>
                 <input type="number" pattern="\d*" inputmode="decimal" class="bar-weight" />
 
                 <div class="back-button" role="button">Back</div>
             </div>
-        </fieldset>
+        </fieldset> -->
 
         <fieldset class="setting" data-setting="weight-set">
             <div class="setting-content">
