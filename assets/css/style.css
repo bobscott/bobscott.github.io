@@ -38,6 +38,8 @@ body {
     align-items: center;
     justify-content: space-between;
     flex: 0 0 50px;
+    padding-left: max(0rem, (100% - 500px) / 2);
+    padding-right: max(0rem, (100% - 500px) / 2);
     background-color: var(--color-black);
     position: relative;
     z-index: 10;
@@ -342,16 +344,17 @@ body {
 
 .setting {
     display: none;
+    max-width: 500px;
     width: 100%;
-    max-width: none;
     height: 100%;
     padding: 5.2rem 1rem 2rem;
-    margin: 0; 
+    margin: auto; 
     border: none;
     background: #0f0f0f;
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
     overflow: auto;
 }
 
@@ -443,8 +446,10 @@ body {
 }
 
 .settings-list {
+    max-width: 500px;
     width: 100%;
     padding: 2rem 1rem;
+    margin: auto;
 }
 
 .menu-title {
