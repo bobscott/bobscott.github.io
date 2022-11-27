@@ -45,7 +45,7 @@ body {
 
 .logo {
     margin: 0 0 0 1rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: normal;
     letter-spacing: -0.3px;
     color: var(--color-white);
@@ -63,11 +63,13 @@ body {
 }
 
 .timer {
-    opacity: 0;
+    padding: 0px 12px;
+    border-radius: 6px;
+    background-color: var(--color-white);
+    color: var(--color-black);
     font-size: 1.25rem;
-    border: 1px solid #333;
-    padding: 3px 15px;
-    border-radius: 8px;
+    font-weight: 800;
+    opacity: 0;
     transition: color 0.5s, border 0.5s, opacity 0.1s;
 }
 
@@ -76,8 +78,8 @@ body {
 }
 
 .timer.red {
-    border-color: var(--color-red);
-    color: var(--color-red);
+    background-color: var(--color-red);
+    color: var(--color-white);
 }
 
 .settings-button {
@@ -134,7 +136,7 @@ body {
 .weight-input {
     display: block;
     width: 7rem;
-    padding: 0.7rem 0.5rem;
+    padding: 0.7rem 1rem;
     margin: 0;
     border: none;
     outline: none;
@@ -156,7 +158,7 @@ body {
 
 .weight-input {
     flex: 100%;
-    max-width: 200px;
+    max-width: 300px;
 }
 
 .weight-input::placeholder {
@@ -191,7 +193,7 @@ body {
 .precent-input {
     appearance: none;
     display: block;
-    padding: 0.7rem 0.5rem;
+    padding: 0.7rem 1rem;
     margin: 0;
     border: none;
     outline: none;
@@ -466,11 +468,13 @@ body {
 }
 
 .setting-option .preview {
+    min-width: 4rem;
     padding: 0.25rem 1rem;
     border-radius: 6px;
     background-color: var(--color-white);
     color: var(--color-black);
     font-weight: 600;
+    text-align: center;
 }
 
 .setting-option.more::after {

@@ -148,6 +148,10 @@ function showContextButton( button ) {
 // opens settings menu
 document.querySelector('.settings-button').addEventListener( 'click', ()=>{
     document.body.classList.toggle('settings-open');
+    
+    if (document.querySelector('.setting.show')) {
+        document.querySelector('.setting.show').classList.remove('show');
+    }
 });
 
 // closes settings menu
@@ -222,6 +226,17 @@ function setRestTimer() {
 document.querySelector('.rest-amount').addEventListener( 'change', setRestTimer );
 
 
+// sets rest alarm in settings
+function setRestAlarm() {
+    let rest_alarm = document.querySelector('.rest-alarm').value;
+
+    document.querySelector('.setting-option[data-setting="rest-alarm"] .preview').innerHTML = rest_alarm;
+    window.localStorage.restAlarm = rest_alarm;
+}
+
+document.querySelector('.rest-alarm').addEventListener( 'change', setRestAlarm );
+
+
 // timer function
 var timeInterval = '';
 
@@ -252,7 +267,9 @@ function startTimer() {
             endMinutes -= 1;
         } else if ( endSeconds < 1 && endMinutes == 0 ) {
             clearInterval( timeInterval );
-            endAlert.play();
+            if (window.localStorage.restAlarm == 'On + 10sec' || window.localStorage.restAlarm == 'On') {
+                endAlert.play();
+            }
         }
         if ( endSeconds < 10 ) {
             timer.innerHTML = endMinutes + ':0' + endSeconds;
@@ -261,7 +278,9 @@ function startTimer() {
         }
         if ( endSeconds == 10 && endMinutes == 0 ) {
             timer.classList.add( 'red' );
-            warningAlert.play();
+            if (window.localStorage.restAlarm == 'On + 10sec') {
+                warningAlert.play();
+            }
         } else if ( endSeconds == 0 && endMinutes == 0 ) {
             timer.classList.remove( 'red' );
         }
@@ -296,6 +315,13 @@ function init() {
     // display rest time in settings
     document.querySelector('.rest-amount').value = window.localStorage.restTime;
     document.querySelector('.setting-option[data-setting="rest-amount"] .preview').innerHTML = window.localStorage.restTime;
+
+    // set default rest alarm
+    window.localStorage.restAlarm = window.localStorage.restAlarm || 'On + 10sec';
+
+    // display rest alarm in settings
+    document.querySelector('.rest-alarm').value = window.localStorage.restAlarm;
+    document.querySelector('.setting-option[data-setting="rest-alarm"] .preview').innerHTML = window.localStorage.restAlarm;
 
     // set default weight quantities
     window.localStorage.weight55 = window.localStorage.weight55 || 0;
