@@ -2,14 +2,16 @@
 function findWeights() {
     let weight = document.querySelector('.weight-input').value,
         precent = document.querySelector('.precent-input').value,
+        total_weight = Math.floor( weight * precent * 100 ) / 100,
         bar_weight = window.localStorage.barWeight || 45,
-        net_weight = ( ( weight * precent ) - bar_weight ) / 2,
+        net_weight = ( total_weight - bar_weight ) / 2,
         plates = [],
         output = '',
         weight55 = window.localStorage.weight55,
         weight45 = window.localStorage.weight45,
         weight35 = window.localStorage.weight35,
         weight25 = window.localStorage.weight25,
+        weight20 = window.localStorage.weight20,
         weight15 = window.localStorage.weight15,
         weight10 = window.localStorage.weight10,
         weight5 = window.localStorage.weight5,
@@ -37,7 +39,12 @@ function findWeights() {
             net_weight -= 25;
             plates.push('<div class="plate size-25">25</div>');
 
-        } else if ( net_weight >= 15 && weight15 > 0 ) {
+        } else if ( net_weight >= 20 && weight20 > 0 ) {
+            weight20 -= 1;
+            net_weight -= 20;
+            plates.push('<div class="plate size-20">20</div>');
+
+        }else if ( net_weight >= 15 && weight15 > 0 ) {
             weight15 -= 1;
             net_weight -= 15;
             plates.push('<div class="plate size-15">15</div>');
@@ -63,7 +70,7 @@ function findWeights() {
             plates.push('<div class="plate size-1point25">1.25</div>');
 
         } else {
-            plates.push('<div class="plate size-LO"><p class="message">Missing Weights for: ' + net_weight + '</p><p class="help">Adjust your weight sets in the settings.</p></div>');
+            plates.push('<div class="plate size-LO"><p class="message">Missing Weights for: ' + (Math.floor(net_weight * 100) / 100) + '</p><p class="help">Adjust your weight sets in the settings.</p></div>');
             net_weight = 0;
         }
     }
@@ -83,10 +90,18 @@ function findWeights() {
             last = plates[ a ];
         }
         output += '</div>';
-        document.querySelector('.weights-container').innerHTML = output;
+
     } else {
-        document.querySelector('.weights-container').innerHTML = '';
+        if (weight > 0) {
+            output += '<div class="group"><div class="plate size-under"><p class="message">Total Weight less than Bar</p><p class="help">Your bar weight is set to ' + bar_weight + '.<br /> You can change this from your settings.</p></div></div>';
+        }
     }
+
+    if (weight > 0) {
+        output = '<div class="weight-total">' + total_weight + ' Total</div>' + output;
+    }
+
+    document.querySelector('.weights-container').innerHTML = output;
 }
 
 // weight key input
@@ -328,6 +343,7 @@ function init() {
     window.localStorage.weight45 = window.localStorage.weight45 || 10;
     window.localStorage.weight35 = window.localStorage.weight35 || 1;
     window.localStorage.weight25 = window.localStorage.weight25 || 1;
+    window.localStorage.weight20 = window.localStorage.weight20 || 0;
     window.localStorage.weight15 = window.localStorage.weight15 || 0;
     window.localStorage.weight10 = window.localStorage.weight10 || 2;
     window.localStorage.weight5 = window.localStorage.weight5 || 2;
@@ -339,6 +355,7 @@ function init() {
     document.querySelector('.weight-45').value = window.localStorage.weight45;
     document.querySelector('.weight-35').value = window.localStorage.weight35;
     document.querySelector('.weight-25').value = window.localStorage.weight25;
+    document.querySelector('.weight-20').value = window.localStorage.weight20;
     document.querySelector('.weight-15').value = window.localStorage.weight15;
     document.querySelector('.weight-10').value = window.localStorage.weight10;
     document.querySelector('.weight-5').value = window.localStorage.weight5;
