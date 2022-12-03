@@ -93,7 +93,7 @@ function findWeights() {
 
     } else {
         if (weight > 0) {
-            output += '<div class="group"><div class="plate size-under"><p class="message">Total Weight less than Bar</p><p class="help">Your bar weight is set to ' + bar_weight + '.<br /> You can change this from your settings.</p></div></div>';
+            output += '<div class="group"><div class="plate size-under"><p class="message">Total Weight less than Bar</p><p class="help">Your bar weight is set to ' + bar_weight + '.<br /> You can change this from the settings.</p></div></div>';
         }
     }
 
