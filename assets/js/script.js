@@ -275,6 +275,11 @@ function setWarmupType() {
 
 document.querySelector('.simplifed-warmup').addEventListener( 'change', setWarmupType );
 
+// prevent double click on warmup checkbox
+document.querySelector('.simplifed-warmup').addEventListener( 'click', (e)=>{
+    e.stopPropagation();
+});
+
 // changes warmup values
 function simplifyWarmup(simple) {
     if (simple) {
@@ -371,7 +376,8 @@ function init() {
     document.querySelector('.setting-option[data-setting="rest-alarm"] .preview').innerHTML = window.localStorage.restAlarm;
 
     // set warmup values
-    if (window.localStorage.warmupType == 'true') {
+    if (window.localStorage.warmupType == 'true' || window.localStorage.warmupType == undefined) {
+        window.localStorage.warmupType = true;
         document.querySelector('.simplifed-warmup').checked = true;
         simplifyWarmup(true);
     } else {
