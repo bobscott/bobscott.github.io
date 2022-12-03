@@ -47,7 +47,7 @@ body {
 }
 
 .logo {
-    margin: 0 0 0 1rem;
+    margin: 0 0.5rem 0 1rem;
     font-size: 1.3rem;
     font-weight: normal;
     letter-spacing: -0.3px;
@@ -139,7 +139,8 @@ body {
 .weight-input {
     display: block;
     width: 7rem;
-    padding: 0.7rem 1rem;
+    height: 3rem;
+    padding: 0.5rem 1rem;
     margin: 0;
     border: none;
     outline: none;
@@ -153,6 +154,8 @@ body {
 }
 
 .rest-button {
+    display: flex;
+    align-items: center;
     width: 4.5rem;
     background: var(--color-red);
     color: var(--color-white);
@@ -162,10 +165,11 @@ body {
 .weight-input {
     flex: 100%;
     max-width: 300px;
+    font-size: 1.5rem;
 }
 
 .weight-input::placeholder {
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: var(--color-black);
 }
 
@@ -196,7 +200,9 @@ body {
 .precent-input {
     appearance: none;
     display: block;
-    padding: 0.7rem 1rem;
+    width: 5.5rem;
+    height: 3rem;
+    padding: 0.7rem 2rem 0.7rem 1rem;
     margin: 0;
     border: none;
     outline: none;
@@ -213,8 +219,16 @@ body {
     font-size: 0.75rem;
 }
 
-.precent-input .regular {
+.precent-input .simplifed {
     color: var(--color-red);
+}
+
+.simplified-warmup-enabled .precent-input option {
+    display: none;
+}
+
+.simplified-warmup-enabled .precent-input .simplifed {
+    display: block;
 }
 
 .weight-total {
@@ -538,4 +552,18 @@ body {
     top: 0;
     left: 0;
     opacity: 0;
+}
+
+.setting-option input[type="checkbox"] {
+    appearance: none;
+    display: block;
+    width: 1.625rem;
+    height: 1.625rem;
+    border-radius: 6px;
+    background: var(--color-white);
+}
+
+.setting-option input[type="checkbox"]:checked {
+    border: 2px solid var(--color-white);
+    background-color: var(--color-red);
 }

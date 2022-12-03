@@ -189,7 +189,16 @@ function openSetting(e) {
     if (menu) {
         menu.classList.add('show');
     } else if (input) {
-        input.focus();
+        switch (input.type) {
+            case 'checkbox':
+                input.checked = !input.checked;
+                var e = new Event('change');
+                input.dispatchEvent(e);
+                break;
+            default:
+                input.focus();
+                break;
+        }
     }
 }
 
@@ -251,6 +260,29 @@ function setRestAlarm() {
 
 document.querySelector('.rest-alarm').addEventListener( 'change', setRestAlarm );
 
+// sets warmup type in settings
+function setWarmupType() {
+    let simplifed_warmup = document.querySelector('.simplifed-warmup').checked;
+
+    window.localStorage.warmupType = simplifed_warmup;
+
+    if (simplifed_warmup) {
+        simplifyWarmup(true);
+    } else {
+        simplifyWarmup(false);
+    }
+}
+
+document.querySelector('.simplifed-warmup').addEventListener( 'change', setWarmupType );
+
+// changes warmup values
+function simplifyWarmup(simple) {
+    if (simple) {
+        document.body.classList.add('simplified-warmup-enabled');
+    } else {
+        document.body.classList.remove('simplified-warmup-enabled');
+    }
+}
 
 // timer function
 var timeInterval = '';
@@ -337,6 +369,15 @@ function init() {
     // display rest alarm in settings
     document.querySelector('.rest-alarm').value = window.localStorage.restAlarm;
     document.querySelector('.setting-option[data-setting="rest-alarm"] .preview').innerHTML = window.localStorage.restAlarm;
+
+    // set warmup values
+    if (window.localStorage.warmupType == 'true') {
+        document.querySelector('.simplifed-warmup').checked = true;
+        simplifyWarmup(true);
+    } else {
+        document.querySelector('.simplifed-warmup').checked = false;
+        simplifyWarmup(false);
+    }
 
     // set default weight quantities
     window.localStorage.weight55 = window.localStorage.weight55 || 0;
