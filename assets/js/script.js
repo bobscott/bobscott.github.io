@@ -7,6 +7,7 @@ function findWeights() {
         net_weight = ( total_weight - bar_weight ) / 2,
         plates = [],
         output = '',
+        help_message = '<p class="help">Adjust your weight sets in the settings.</p>',
         weight55 = window.localStorage.weight55,
         weight45 = window.localStorage.weight45,
         weight35 = window.localStorage.weight35,
@@ -70,7 +71,10 @@ function findWeights() {
             plates.push('<div class="plate size-1point25">1.25</div>');
 
         } else {
-            plates.push('<div class="plate size-LO"><p class="message">Missing Weights for: ' + (Math.floor(net_weight * 100) / 100) + '</p><p class="help">Adjust your weight sets in the settings.</p></div>');
+            if ( net_weight % 1.25 != 0 ) {
+                help_message = '';
+            }
+            plates.push('<div class="plate size-LO"><p class="message">Missing Weights for: ' + (Math.floor(net_weight * 100) / 100) + '</p>' + help_message + '</div>');
             net_weight = 0;
         }
     }
