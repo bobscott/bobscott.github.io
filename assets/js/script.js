@@ -108,6 +108,7 @@ function findWeights() {
     document.querySelector('.weights-container').innerHTML = output;
 }
 
+
 // weight key input
 function weightKeyInput() {
     showContextButton('ok');
@@ -116,6 +117,7 @@ function weightKeyInput() {
 
 document.querySelector('.weight-input').addEventListener( 'keyup', weightKeyInput );
 document.querySelector('.precent-input').addEventListener( 'change', findWeights );
+
 
 // weight input blur
 function weightInputBlur() {
@@ -127,6 +129,7 @@ function weightInputBlur() {
 }
 
 document.querySelector('.weight-input').addEventListener( 'blur', weightInputBlur);
+
 
 // weight input focus
 function weightInputFocus() {
@@ -141,6 +144,7 @@ function weightInputFocus() {
 
 document.querySelector('.weight-input').addEventListener( 'focus', weightInputFocus);
 
+
 // clear input
 function clearWeightInput() {
     document.querySelector('.weight-input').value = '';
@@ -149,6 +153,7 @@ function clearWeightInput() {
 }
 
 document.querySelector('.input-container .context-buttons .clear').addEventListener( 'click', clearWeightInput);
+
 
 // show context buttons
 function showContextButton( button ) {
@@ -164,6 +169,7 @@ function showContextButton( button ) {
     }
 }
 
+
 // opens settings menu
 document.querySelector('.settings-button').addEventListener( 'click', ()=>{
     document.body.classList.toggle('settings-open');
@@ -173,10 +179,12 @@ document.querySelector('.settings-button').addEventListener( 'click', ()=>{
     }
 });
 
+
 // closes settings menu
 document.querySelector('.close-settings').addEventListener( 'click', ()=>{
     document.body.classList.remove('settings-open');
 });
+
 
 // opens settings option
 let settingOptions = document.querySelectorAll('.setting-option');
@@ -206,6 +214,7 @@ function openSetting(e) {
     }
 }
 
+
 // closes settings option
 let settingOptionsClose = document.querySelectorAll('.back-button');
 
@@ -216,6 +225,15 @@ for (let a = 0; a < settingOptionsClose.length; a += 1) {
 function closeSetting(e) {
     e.target.closest('.setting').classList.remove('show');
 }
+
+
+// opens settings from warning message
+document.addEventListener('click', (e)=>{ 
+    if (e.target.closest('.size-LO') != null) {
+        document.querySelector('.settings-button').click();
+        document.querySelector('.setting-option[data-setting="weight-set"]').click();
+    }
+});
 
 // sets the bar weight value in settings
 function setBarWeight() {
@@ -264,6 +282,7 @@ function setRestAlarm() {
 
 document.querySelector('.rest-alarm').addEventListener( 'change', setRestAlarm );
 
+
 // sets warmup type in settings
 function setWarmupType() {
     let simplifed_warmup = document.querySelector('.simplifed-warmup').checked;
@@ -279,10 +298,12 @@ function setWarmupType() {
 
 document.querySelector('.simplifed-warmup').addEventListener( 'change', setWarmupType );
 
+
 // prevent double click on warmup checkbox
 document.querySelector('.simplifed-warmup').addEventListener( 'click', (e)=>{
     e.stopPropagation();
 });
+
 
 // changes warmup values
 function simplifyWarmup(simple) {
@@ -292,6 +313,7 @@ function simplifyWarmup(simple) {
         document.body.classList.remove('simplified-warmup-enabled');
     }
 }
+
 
 // timer function
 var timeInterval = '';
@@ -344,6 +366,7 @@ function startTimer() {
 }
 
 document.querySelector('.rest-button').addEventListener( 'click', startTimer );
+
 
 // end timer
 function endTimer() {
