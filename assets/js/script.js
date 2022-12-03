@@ -227,11 +227,18 @@ function closeSetting(e) {
 }
 
 
-// opens settings from warning message
+// opens settings from missing weight warning message
 document.addEventListener('click', (e)=>{ 
     if (e.target.closest('.size-LO') != null) {
         document.querySelector('.settings-button').click();
         document.querySelector('.setting-option[data-setting="weight-set"]').click();
+    }
+});
+
+// opens settings from under weight message
+document.addEventListener('click', (e)=>{ 
+    if (e.target.closest('.size-under') != null) {
+        document.querySelector('.settings-button').click();
     }
 });
 
