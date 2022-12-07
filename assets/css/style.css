@@ -62,8 +62,6 @@ body {
 .logo span {
     display: inline-block;
     margin-left: 2px;
-    font-size: 0.8rem;
-    color: var(--color-red);
 }
 
 .timer {
@@ -158,7 +156,7 @@ body {
     display: flex;
     align-items: center;
     width: 4.5rem;
-    background: var(--color-red);
+    background: var(--color-black-border);
     color: var(--color-white);
     cursor: pointer;
 }
@@ -252,18 +250,17 @@ body {
 
 .weight-total .weight .modifier {
     padding: 0.125rem 0.5rem;
-    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     border-radius: 6px;
-    background-color: var(--color-white);
+    background-color: var(--color-red);
     font-size: 0.875rem;
-    color: var(--color-black);
+    color: var(--color-white);
 }
 
 .group {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    border-bottom: 1px solid var(--color-black-border);
     opacity: 0;
     transition: opacity 0.2s;
 }

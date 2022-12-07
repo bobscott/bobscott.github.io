@@ -107,7 +107,7 @@ function findWeights() {
         if (percent == '1') {
             weight_label = '';
         }
-        output = '<div class="weight-total"><span class="weight">' + total_weight + 'lbs' + weight_label + '</span></div>' + output;
+        output = '<div class="weight-total"><span class="weight">' + weight_label + total_weight + 'lbs' + '</span></div>' + output;
     }
 
     document.querySelector('.weights-container').innerHTML = output;
