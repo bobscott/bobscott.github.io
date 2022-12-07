@@ -3,7 +3,7 @@ function findWeights() {
     let weight = document.querySelector('.weight-input').value,
         percent = document.querySelector('.percent-input').value,
         percent_label = document.querySelector('.percent-input').selectedOptions[0].innerHTML,
-        weight_label = '<span class="modifier">' + percent_label + ' of ' + weight + '</span>',
+        weight_label = '<label for="percent-input" class="modifier">' + percent_label + ' of ' + weight + '</label>',
         total_weight = Math.floor( weight * percent * 100 ) / 100,
         bar_weight = window.localStorage.barWeight || 45,
         net_weight = ( total_weight - bar_weight ) / 2,
@@ -107,7 +107,7 @@ function findWeights() {
         if (percent == '1') {
             weight_label = '';
         }
-        output = '<div class="weight-total"><span class="weight">' + weight_label + total_weight + ' lbs' + '</span></div>' + output;
+        output = '<div class="weight-total"><span class="weight">'  + total_weight + ' lbs' + weight_label + '</span></div>' + output;
     }
 
     document.querySelector('.weights-container').innerHTML = output;
