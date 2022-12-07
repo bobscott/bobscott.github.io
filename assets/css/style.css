@@ -236,33 +236,27 @@ body {
 .weight-total {
     padding: 1rem;
     border-bottom: 1px solid var(--color-black-border);
-    background-color: var(--color-black-border);
-    font-size: 1.25rem;
-    font-weight: 600;
-    text-align: center;
+    background: linear-gradient(180deg, rgba(12,11,17,1) 0%, rgba(23,21,32,1) 90%);
 }
 
 .weight-total .weight {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    max-width: 120px;
     width: 100%;
-    padding: 0.5rem;
     margin: auto;
     border-radius: 6px;
-    background-color: var(--color-white);
-    color: var(--color-black);
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .weight-total .weight .modifier {
-    padding: 0.25rem 0.5rem;
-    margin-top: 0.125rem;
+    padding: 0.125rem 0.5rem;
+    margin-left: 0.5rem;
     border-radius: 6px;
-    background-color: var(--color-black);
-    font-size: 1rem;
-    color: var(--color-white);
+    background-color: var(--color-white);
+    font-size: 0.875rem;
+    color: var(--color-black);
 }
 
 .group {
