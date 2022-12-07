@@ -249,11 +249,11 @@ body {
 }
 
 .weight-total .weight .modifier {
-    padding: 0.125rem 0.5rem;
+    padding: 0.25rem 0.75rem;
     margin-right: 0.5rem;
     border-radius: 6px;
     background-color: var(--color-red);
-    font-size: 0.875rem;
+    font-size: 1rem;
     color: var(--color-white);
 }
 
