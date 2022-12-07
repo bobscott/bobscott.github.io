@@ -1,8 +1,10 @@
 // calculates and displays the plates needed for a given weight
 function findWeights() {
     let weight = document.querySelector('.weight-input').value,
-        precent = document.querySelector('.precent-input').value,
-        total_weight = Math.floor( weight * precent * 100 ) / 100,
+        percent = document.querySelector('.percent-input').value,
+        percent_label = document.querySelector('.percent-input').selectedOptions[0].innerHTML,
+        weight_label = '<span class="modifier">' + percent_label + ' of ' + weight + '</span>',
+        total_weight = Math.floor( weight * percent * 100 ) / 100,
         bar_weight = window.localStorage.barWeight || 45,
         net_weight = ( total_weight - bar_weight ) / 2,
         plates = [],
@@ -102,7 +104,10 @@ function findWeights() {
     }
 
     if (weight > 0) {
-        output = '<div class="weight-total">' + total_weight + ' Total</div>' + output;
+        if (percent == '1') {
+            weight_label = '';
+        }
+        output = '<div class="weight-total"><span class="weight">' + total_weight + weight_label + '</span></div>' + output;
     }
 
     document.querySelector('.weights-container').innerHTML = output;
@@ -116,7 +121,7 @@ function weightKeyInput() {
 }
 
 document.querySelector('.weight-input').addEventListener( 'keyup', weightKeyInput );
-document.querySelector('.precent-input').addEventListener( 'change', findWeights );
+document.querySelector('.percent-input').addEventListener( 'change', findWeights );
 
 
 // weight input blur

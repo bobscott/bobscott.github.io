@@ -199,7 +199,7 @@ body {
     display: block;
 }
 
-.precent-input {
+.percent-input {
     appearance: none;
     display: block;
     width: 5.5rem;
@@ -217,19 +217,19 @@ body {
     background-size: 1.25rem;
 }
 
-.precent-input optgroup {
+.percent-input optgroup {
     font-size: 0.75rem;
 }
 
-.precent-input .simplifed {
+.percent-input .simplifed {
     color: var(--color-red);
 }
 
-.simplified-warmup-enabled .precent-input option {
+.simplified-warmup-enabled .percent-input option {
     display: none;
 }
 
-.simplified-warmup-enabled .precent-input .simplifed {
+.simplified-warmup-enabled .percent-input .simplifed {
     display: block;
 }
 
@@ -239,6 +239,28 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     text-align: center;
+}
+
+.weight-total .weight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 120px;
+    width: 100%;
+    padding: 0.5rem;
+    margin: auto;
+    border-radius: 6px;
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.weight-total .weight .modifier {
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    background-color: var(--color-black);
+    font-size: 1rem;
+    color: var(--color-white);
 }
 
 .group {
