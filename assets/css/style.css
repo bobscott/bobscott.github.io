@@ -232,10 +232,10 @@ body {
 }
 
 .weight-total {
-    padding: 0.5rem;
-    background: var(--color-white);
-    color: var(--color-black);
-    margin-bottom: 1rem;
+    padding: 1rem;
+    background: rgb(0 0 0 / 20%);
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
 }
 
 .weight-total .weight {
@@ -246,7 +246,7 @@ body {
     width: 100%;
     margin: auto;
     border-radius: 6px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
 }
 
@@ -287,7 +287,7 @@ body {
     justify-content: center;
     width: 100px;
     height: 100px;
-    margin: 1rem 0.5rem;
+    margin: 0.5rem 0.5rem;
     border-radius: 50%;
     background-color: #fff;
     font-size: 1.5rem;
@@ -363,7 +363,7 @@ body {
     width: 100%;
     height: auto;
     padding: 1rem;
-    margin: 1rem 2rem;
+    margin: 1.5rem 2rem 1rem;
     border-radius: 4px;
     background-color: pink;
     font-size: 1.2rem;
