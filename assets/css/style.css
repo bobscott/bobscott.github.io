@@ -258,6 +258,53 @@ body {
     color: #999;
 }
 
+.bar-weight-display {
+    width: 100%;
+}
+
+.barbell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 320px;
+    width: 100%;
+    margin: 0 auto 2rem;
+    position: relative;
+}
+
+.barbell .out,
+.barbell .in,
+.barbell .middle {
+    background-color: var(--color-black);
+}
+
+.barbell .out {
+    width: 20%;
+    height: 15px;
+}
+
+.barbell .in {
+    width: 4%;
+    height: 26px;
+}
+
+.barbell .middle {
+    width: 50%;
+    height: 11px;
+}
+
+.barbell .weight {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
 .group {
     display: flex;
     justify-content: center;

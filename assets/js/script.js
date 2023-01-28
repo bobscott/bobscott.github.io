@@ -19,7 +19,8 @@ function findWeights() {
         weight10 = window.localStorage.weight10,
         weight5 = window.localStorage.weight5,
         weight2point5 = window.localStorage.weight2point5,
-        weight1point25 = window.localStorage.weight1point25;
+        weight1point25 = window.localStorage.weight1point25,
+        barbell = '<div class="barbell"><div class="out"></div><div class="in"></div><div class="middle"><span class="weight">' + bar_weight + '</span></div><div class="in"></div><div class="out"></div></div>';
 
     while ( net_weight > 0 ) {
         if ( net_weight >= 55 && weight55 > 0 ) {
@@ -107,7 +108,7 @@ function findWeights() {
         if (percent == '1') {
             weight_label = '';
         }
-        output = '<div class="weight-total"><span class="weight">'  + total_weight + ' lbs' + weight_label + '</span></div>' + output;
+        output = '<div class="weight-total"><span class="weight">'  + total_weight + ' lbs' + weight_label + '</span></div><div class="bar-weight-display">' + barbell + '</div>' + output;
     }
 
     document.querySelector('.weights-container').innerHTML = output;
