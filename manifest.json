@@ -8,12 +8,12 @@
   "theme_color": "#171520",
   "description": "Easily find which plates you need for your workout.",
   "icons": [{
-       "src": "assets/images/plate-picker-1024.png",
+       "src": "plate-picker-1024.png",
        "sizes": "1024x1024",
        "type": "image/png",
        "purpose": "any maskable"
    },{
-    "src": "assets/images/plate-picker-512.png",
+    "src": "plate-picker-512.png",
     "sizes": "512x512",
     "type": "image/png"
    }]

@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d38761fc.css",
+    "main.js": "/static/js/main.3823f9b7.js",
+    "static/media/timer.wav": "/static/media/timer.d122a7951df12a4f3e8c.wav",
+    "static/media/timer-10.wav": "/static/media/timer-10.678c6c3fc0f27f3bd438.wav",
+    "index.html": "/index.html",
+    "static/media/chevron-down.svg": "/static/media/chevron-down.604b532d064db3d93cd1.svg",
+    "main.d38761fc.css.map": "/static/css/main.d38761fc.css.map",
+    "main.3823f9b7.js.map": "/static/js/main.3823f9b7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d38761fc.css",
+    "static/js/main.3823f9b7.js"
+  ]
+}
